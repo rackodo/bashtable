@@ -1,1 +1,1 @@
-from .bashtable import bashtable as bashtable
+from ..bashtable import bashtable as bashtable

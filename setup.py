@@ -21,7 +21,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     packages=['bashtable'],
-    package_dir={"bashtable": "src/bashtable"},
+    package_dir={"bashtable": "src"},
     package_data={'bashtable': ['']},
     python_requires=">=3.6",
 
