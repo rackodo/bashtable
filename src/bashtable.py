@@ -3,7 +3,7 @@ edgeH = "\u2550"
 thinEdgeH = "\u2500"
 edgeV = "\u2551"
 thinEdgeV = "\u2502"
-splits = ["\u2566", "\u2563", "\u2560", "\u2569", "\u253c"]
+splits = ["\u2566", "\u2563", "\u2560", "\u2569", "\u256c"]
 thinSplits = ["\u252c", "\u2524", "\u251c", "\u2534", "\u253c"]
 
 class bashtable:
@@ -12,6 +12,7 @@ class bashtable:
     """
     def __init__(self):
         self.data = []
+        self.colTitles = []
 
     def setData(self, row, *data):
         """
@@ -26,6 +27,17 @@ class bashtable:
         self.data.extend(["" for x in range((row - len(oldData) - 2))])
         self.data.append(data)
 
+    def setColumnTitle(self, col, title):
+        """
+        Sets the title of the table's columns.
+        """
+        col += 1
+
+        oldTitles = []
+        oldTitles.extend(self.colTitles)
+
+        self.colTitles.extend(["" for x in range((col - len(oldTitles) - 2))])
+        self.colTitles.append(title)
 
     def draw(self):
         """
@@ -51,14 +63,20 @@ class bashtable:
         ThinSplitX = thinSplits[4]
 
         # Do some math to get important variables.
+        ## Number of rows.
         numRows = len(self.data)
-        numCols = max([len(i) for i in self.data])
+
+        ## Number of columns.
+        numCols = max(max([len(i) for i in self.data]), len(self.colTitles))
+
+        ## Total length of the table's columns. I can't remember if this is still used, but it's staying in for reference purposes.
         totalLength = 0
         for i in range(numRows):
             if sum([len(str(j)) for j in self.data[i]]) > totalLength:
                 totalLength = sum([len(str(j)) for j in self.data[i]])
         totalLength += numCols * 2
 
+        ## Length of each column.
         colLengths = []
         for i in range(numCols):
             colLengths.append(0)
@@ -68,6 +86,12 @@ class bashtable:
                     candidates.append(len(self.data[j][i]))
                 except IndexError:
                     candidates.append(0)
+
+                try:
+                    candidates.append(len(self.colTitles[i]))
+                except IndexError:
+                    candidates.append(0)
+                
                 colLengths[i] = max(candidates)
 
         # Print the top part of the table.
@@ -80,10 +104,27 @@ class bashtable:
                 top += CornerTR
         print(top)
 
+        # Print title row.
+        titleRow = EdgeV
+        for i in range(numCols):
+            titleRow += " " + self.colTitles[i] + " " * (colLengths[i] - len(self.colTitles[i])) + " " + EdgeV
+        print(titleRow)
+
+        titleBar = SplitL
+        for i in range(len(colLengths)):
+            titleBar += EdgeH * (colLengths[i] + 2)
+            if i < len(colLengths) - 1:
+                titleBar += SplitX
+            else:
+                titleBar += SplitR
+        print(titleBar)
+
         # Print rows.
         for i in range(numRows):
             rows = []
-            rowText = EdgeV
+            rowText = ThinEdgeV
+
+            # Print each column in the row.
             for j in range(numCols):
                 try:
                     rowText += " " + self.data[i][j] + (" " * (colLengths[j] - len(self.data[i][j]))) + " "
@@ -92,24 +133,37 @@ class bashtable:
                 if j < numCols - 1:
                     rowText += ThinEdgeV
                 else:
-                    rowText += EdgeV
+                    rowText += ThinEdgeV
             print(rowText)
+
+            # Print lines between rows.
             if i < numRows - 1:
-                split = SplitL
+                split = ThinSplitL
                 for i in range(len(colLengths)):
                     split += ThinEdgeH * (colLengths[i] + 2)
                     if i < len(colLengths) - 1:
                         split += ThinSplitX
                     else:
-                        split += SplitR
+                        split += ThinSplitR
                 print(split)
 
         # Print the bottom part of the table.
         bottom = CornerBL
         for i in range(len(colLengths)):
-            bottom += EdgeH * (colLengths[i] + 2)
+            bottom += ThinEdgeH * (colLengths[i] + 2)
             if i < len(colLengths) - 1:
-                bottom += SplitD
+                bottom += ThinSplitD
             else:
                 bottom += CornerBR
         print(bottom)
+
+table = bashtable()
+table.setColumnTitle(0, "First Name")
+table.setColumnTitle(1, "Last Name")
+table.setColumnTitle(2, "Email")
+table.setColumnTitle(3, "Phone")
+table.setData(0, "John", "Smith", "johnsmith@email.com", "555-555-5555")
+table.setData(1, "Jane", "Doe", "janedoe@email.com", "555-555-5555")
+table.setData(2, "Joe", "Bloggs", "joebloggs@email.com", "555-555-5555")
+table.setData(3, "Bash", "Elliott", "bashelliott@email.com", "555-555-5555") 
+table.draw()
