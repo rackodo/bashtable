@@ -12,8 +12,9 @@ class bashtable:
     """
     def __init__(self):
         self.data = []
+        self.rowTitles = []
 
-    def setData(self, row, *data):
+    def setData(self, row, rowTitle, *data):
         """
         Sets the data for the table.
         """
@@ -23,9 +24,14 @@ class bashtable:
         oldData = []
         oldData.extend(self.data)
 
+        oldTitles = []
+        oldTitles.extend(self.rowTitles)
+
         self.data.extend(["" for x in range((row - len(oldData) - 2))])
         self.data.append(data)
 
+        self.rowTitles.extend(["" for x in range((row - len(oldTitles) - 2))])
+        self.rowTitles.append(rowTitle)
 
     def draw(self):
         """
@@ -51,8 +57,13 @@ class bashtable:
         ThinSplitX = thinSplits[4]
 
         # Do some math to get important variables.
+        ## Number of rows.
         numRows = len(self.data)
+
+        ## Number of columns.
         numCols = max([len(i) for i in self.data])
+
+        ## Total length of the table's columns. I can't remember if this is still used, but it's staying in for reference purposes.
         totalLength = 0
         for i in range(numRows):
             if sum([len(str(j)) for j in self.data[i]]) > totalLength:
@@ -84,6 +95,8 @@ class bashtable:
         for i in range(numRows):
             rows = []
             rowText = EdgeV
+
+            # Print each column in the row.
             for j in range(numCols):
                 try:
                     rowText += " " + self.data[i][j] + (" " * (colLengths[j] - len(self.data[i][j]))) + " "
@@ -94,6 +107,8 @@ class bashtable:
                 else:
                     rowText += EdgeV
             print(rowText)
+
+            # Print lines between rows.
             if i < numRows - 1:
                 split = SplitL
                 for i in range(len(colLengths)):
