@@ -1,5 +1,13 @@
-# bashtable
-Tables package for Python.
+![bashtable](https://user-images.githubusercontent.com/42397332/162611617-8835e233-3c59-4f8e-9846-c6c4e2add4ae.png)
+
+<div align="center">
+	<br>
+	<img src="https://img.shields.io/github/workflow/status/raccter/bashtable/Upload%20Python%20Package?label=Package%20Status&style=for-the-badge&logo=python&logoColor=white">
+	<img src="https://img.shields.io/github/v/tag/raccter/bashtable?style=for-the-badge">
+	<img src="https://img.shields.io/github/release-date/raccter/bashtable?style=for-the-badge">
+	<img src="https://img.shields.io/github/commit-activity/w/raccter/bashtable?style=for-the-badge">
+	<br><br>
+</div>
 
 # Todo
 - [ ] [Create base table.](https://github.com/raccter/bashtable/issues/1)
