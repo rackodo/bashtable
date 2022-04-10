@@ -1,1 +1,0 @@
-from .bashtable import bashtable as bashtable
