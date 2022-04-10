@@ -17,6 +17,7 @@
 - [ ] [Implement column titles.](https://github.com/raccter/bashtable/issues/5)
 - [ ] [Implement dynamic resizing of columns depending on size of data within each column.](https://github.com/raccter/bashtable/issues/6)
 - [ ] [Implement table titles](https://github.com/raccter/bashtable/issues/7)
+- [ ] [Write readme](https://github.com/raccter/bashtable/issues/10)
 - [ ] Try not to die in the process.
 
 # Future Features
