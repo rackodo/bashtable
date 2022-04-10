@@ -9,15 +9,83 @@
 	<br><br>
 </div>
 
-# Todo
-- [x] [Create base table.](https://github.com/raccter/bashtable/issues/1)
-- [x] [Implement multiple rows.](https://github.com/raccter/bashtable/issues/2)
-- [x] [Implement multiple columns.](https://github.com/raccter/bashtable/issues/3)
-- [x] [Implement column titles.](https://github.com/raccter/bashtable/issues/5)
-- [x] [Implement dynamic resizing of columns depending on size of data within each column.](https://github.com/raccter/bashtable/issues/6)
-- [ ] [Write readme](https://github.com/raccter/bashtable/issues/10)
-- [ ] Try not to die in the process.
+Bashtable is a tables package for Python that provides a simple and easy to use system for creating simplistic and professional looking tables to use in your Python programs.
 
-# Future Features
-- [ ] Custom themes.
-- [ ] Customizable colors of elements in tables.
+Bashtable is inspired by [Kyostenas' prettyTables](https://github.com/Kyostenas/prettyTables) and is intended as a simpler way to display data in the Python console.
+
+# Table of Contents
+- [Installation](#installation)
+  * [Using pip](#using-pip)
+  * [Using setup.py](#using-setuppy)
+- [Usage](#usage)
+  * [Basic bashtable](#basic-bashtable)
+  * [Adding column titles](#adding-column-titles)
+- [Support and Contributions](#support-and-contributions)
+
+# Installation
+## Using pip
+Run `python -m pip install bashtable` in the context of your choice, and Bashtable will be installed into your Python installation's site-packages.
+## Using setup.py
+Download the latest release's source code and run `python setup.py install` in the root directory.
+
+# Usage
+## Basic bashtable
+
+**Input**
+```python
+from bashtable import bashtable
+
+table = bashtable()
+table.setData(0, "Bash", "Elliott", "17")
+table.setData(1, "Jane", "Doe", "21")
+table.setData(2, "John", "Doe", "21")
+table.draw()
+```
+
+**Output**
+```
+╔══════╦═════════╦════╗
+║      ║         ║    ║
+╠══════╬═════════╬════╣
+│ Bash │ Elliott │ 17 │
+├──────┼─────────┼────┤
+│ Jane │ Doe     │ 21 │
+├──────┼─────────┼────┤
+│ John │ Doe     │ 21 │
+╚──────┴─────────┴────╝
+```
+
+## Adding column titles
+
+**Input**
+```python
+from bashtable import bashtable
+
+table = bashtable()
+table.setColumnTitle(0, "First Name")
+table.setColumnTitle(1, "Last Name")
+table.setColumnTitle(2, "Age")
+
+table.setData(0, "Bash", "Elliott", "17")
+table.setData(1, "Jane", "Doe", "21")
+table.setData(2, "John", "Doe", "21")
+table.draw()
+```
+
+**Output**
+```
+╔════════════╦═══════════╦═════╗
+║ First Name ║ Last Name ║ Age ║
+╠════════════╬═══════════╬═════╣
+│ Bash       │ Elliott   │ 17  │
+├────────────┼───────────┼─────┤
+│ Jane       │ Doe       │ 21  │
+├────────────┼───────────┼─────┤
+│ John       │ Doe       │ 21  │
+╚────────────┴───────────┴─────╝
+```
+
+# Support and Contributions
+If you have any suggestions for Bashbox or want to fork Bashbox to improve upon it or add any features, feel free to do so and even make a pull request! I appreciate each and every contribution made.
+
+If you've found a bug, please make an issue so I can work towards fixing it. I am also reachable by email at spicethings9@gmail.com.

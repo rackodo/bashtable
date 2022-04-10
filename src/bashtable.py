@@ -107,7 +107,11 @@ class bashtable:
         # Print title row.
         titleRow = EdgeV
         for i in range(numCols):
-            titleRow += " " + self.colTitles[i] + " " * (colLengths[i] - len(self.colTitles[i])) + " " + EdgeV
+            try:
+                titleRow += " " + self.colTitles[i] + " " * (colLengths[i] - len(self.colTitles[i])) + " " + EdgeV
+            except IndexError:
+                titleRow += " " + " " + " " * (colLengths[i] - len(" ")) + " " + EdgeV
+
         print(titleRow)
 
         titleBar = SplitL
@@ -156,14 +160,3 @@ class bashtable:
             else:
                 bottom += CornerBR
         print(bottom)
-
-table = bashtable()
-table.setColumnTitle(0, "First Name")
-table.setColumnTitle(1, "Last Name")
-table.setColumnTitle(2, "Email")
-table.setColumnTitle(3, "Phone")
-table.setData(0, "John", "Smith", "johnsmith@email.com", "555-555-5555")
-table.setData(1, "Jane", "Doe", "janedoe@email.com", "555-555-5555")
-table.setData(2, "Joe", "Bloggs", "joebloggs@email.com", "555-555-5555")
-table.setData(3, "Bash", "Elliott", "bashelliott@email.com", "555-555-5555") 
-table.draw()
