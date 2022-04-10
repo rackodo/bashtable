@@ -86,7 +86,7 @@ table.draw()
 ```
 
 # Support and Contributions
-If you have any suggestions for Bashbox or want to fork Bashbox to improve upon it or add any features, feel free to do so and even make a pull request! I appreciate each and every contribution made.
+If you have any suggestions for Bashtable or want to fork Bashtable to improve upon it or add any features, feel free to do so and even make a pull request! I appreciate each and every contribution made.
 
 If you've found a bug, please make an issue so I can work towards fixing it. I am also reachable by email at spicethings9@gmail.com.
 

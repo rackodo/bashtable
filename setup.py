@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="bashtable",
-    version="1.0.0",
+    version="1.0.1",
     author="Bash Elliott",
     author_email="spicethings9@gmail.com",
     description="Table package for Python",
