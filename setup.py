@@ -11,9 +11,9 @@ setuptools.setup(
     description="Table package for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/raccter/bashtable",
+    url="https://github.com/rackodo/bashtable",
     project_urls={
-        "Bug Tracker": "https://github.com/raccter/bashtable/issues",
+        "Bug Tracker": "https://github.com/rackodo/bashtable/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
