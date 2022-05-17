@@ -5,15 +5,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="bashtable",
-    version="1.0.1",
+    version="1.0.2",
     author="Bash Elliott",
     author_email="spicethings9@gmail.com",
     description="Table package for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/raccter/bashtable",
+    url="https://github.com/rackodo/bashtable",
     project_urls={
-        "Bug Tracker": "https://github.com/raccter/bashtable/issues",
+        "Bug Tracker": "https://github.com/rackodo/bashtable/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
