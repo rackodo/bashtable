@@ -1,3 +1,6 @@
+# ⚠️ This Repository is Deprecated! ⚠️
+An improved version of this source code can be found in [PyLayoutTools](https://github.com/rackodo/PyLayoutTools).
+
 ![bashtable](https://user-images.githubusercontent.com/42397332/162611617-8835e233-3c59-4f8e-9846-c6c4e2add4ae.png)
 
 <div align="center">
